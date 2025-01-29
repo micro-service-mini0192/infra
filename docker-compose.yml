@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  eureka:
+    image: parkgw9071/eureka
+    container_name: eureka
+    ports:
+      - "8761:8080"
+    networks:
+      - server
+
+  auth:
+    image: parkgw9071/auth
+    container_name: auth
+    depends_on:
+      - eureka
+    ports:
+      - "8000:8080"
+    depends_on:
+      - eureka
+      - mysql
+    networks:
+      - server
+
+networks:
+  server:
+    driver: bridge
