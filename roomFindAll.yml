@@ -1,0 +1,21 @@
+name: roomFindAll
+
+http:
+  host: http://192.168.123.179:8002
+  sharedConnections: 50
+usersPerSec: 10
+duration: 5s
+
+scenario:
+- test:
+  - httpRequest:
+      GET: /api/v1/rooms
+      headers: 
+        Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzg1MjI5NTEsImlkIjoxLCJ1c2VybmFtZSI6InN0cmluZyIsIm5pY2tuYW1lIjoic3RyaW5nIn0.tzBrk5m4IJchMUaLs0iPxdc1mYYmNA5xZ__DK1tP0-d4Old1j7roBjDsQIRVhY9BKxF794FOmabqdUSD_AIYHw
+      handler:
+        status:
+          range: 2xx
+        onCompletion:
+          set: completed <- yes
+      sync: false
+  - awaitVar: completed

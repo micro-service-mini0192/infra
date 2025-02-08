@@ -1,0 +1,21 @@
+name: roomFindChat
+
+http:
+  host: http://192.168.123.179:8002
+  sharedConnections: 50
+usersPerSec: 10
+duration: 5s
+
+scenario:
+- test:
+  - httpRequest:
+      GET: /api/v1/rooms/chats/1
+      headers: 
+        Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzg1MjcxMDIsImlkIjoxLCJ1c2VybmFtZSI6InN0cmluZyIsIm5pY2tuYW1lIjoic3RyaW5nIn0.c2KzyAUBUV4K_PUeJR2_its_QaU5GlgVuY43r2knCyrTQja1_VNp0OjyqmGDM57NrFkeCFAD3Hfugk0ls7khWg
+      handler:
+        status:
+          range: 2xx
+        onCompletion:
+          set: completed <- yes
+      sync: false
+  - awaitVar: completed
