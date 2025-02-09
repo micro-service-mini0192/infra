@@ -1,9 +1,9 @@
 name: roomFindAll
 
 http:
-  host: http://192.168.123.179:8002
-  sharedConnections: 50
-usersPerSec: 10
+  host: http://localhost:8081
+  sharedConnections: 1000
+usersPerSec: 50
 duration: 5s
 
 scenario:

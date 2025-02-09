@@ -14,7 +14,6 @@ services:
       - auth
       - chat1
       - chat2
-      - chat3
 
   auth:
     image: parkgw9071/auth
@@ -37,15 +36,6 @@ services:
   chat2:
     image: parkgw9071/chat
     container_name: chat2
-    restart: always
-    networks:
-      - server
-    expose:
-      - "8080"
-
-  chat3:
-    image: parkgw9071/chat
-    container_name: chat3
     restart: always
     networks:
       - server
