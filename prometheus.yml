@@ -1,0 +1,8 @@
+scrape_configs:
+  - job_name: 'celuveatdev'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['auth:8080']
+      - targets: ['chat1:8080']
+      - targets: ['chat2:8080']
